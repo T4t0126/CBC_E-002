@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <video autoplay="true" id="videoElement" width="300" height="200"></video>
+  <script>
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        document.getElementById('videoElement').srcObject = stream;
+      })
+      .catch(err => console.log("Camera Error: ", err));
+  </script>
+</body>
+</html>
+
