@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಕಾನೂನು ಸಹಾಯಕ | Kannada Legal Aid Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-balance-scale"></i>
+                    <h1>ಕಾನೂನು ಸಹಾಯಕ</h1>
+                    <p class="subtitle">AI-Powered Legal Assistant in Kannada</p>
+                </div>
+                <div class="language-toggle">
+                    <span class="lang-label">ಕನ್ನಡ</span>
+                    <span class="lang-separator">|</span>
+                    <span class="lang-label">English</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>ಕನ್ನಡದಲ್ಲಿ ಕಾನೂನು ಸಹಾಯ ಪಡೆಯಿರಿ</h2>
+                <p>Get legal assistance in your native language with AI-powered guidance</p>
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-microphone"></i>
+                        <span>Voice Support</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-language"></i>
+                        <span>Kannada Language</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure & Private</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interface Selection -->
+        <section class="interface-selection">
+            <h3>Choose Your Interface / ನಿಮ್ಮ ಇಂಟರ್ಫೇಸ್ ಆಯ್ಕೆಮಾಡಿ</h3>
+            
+            <div class="interface-cards">
+                <!-- Lawyer Interface -->
+                <div class="interface-card lawyer-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h4>ವಕೀಲರಿಗಾಗಿ</h4>
+                        <p class="card-subtitle">For Legal Professionals</p>
+                    </div>
+                    
+                    <div class="card-content">
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-file-upload"></i>
+                                <span>Document Analysis</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-history"></i>
+                                <span>Conversation History</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-file-alt"></i>
+                                <span>Summary Reports</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-microphone"></i>
+                                <span>Voice Interaction</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-search"></i>
+                                <span>Legal Research</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <a href="/lawyer" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i>
+                            Enter Lawyer Interface
+                        </a>
+                    </div>
+                </div>
+
+                <!-- User Interface -->
+                <div class="interface-card user-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>ಸಾಮಾನ್ಯ ಜನರಿಗಾಗಿ</h4>
+                        <p class="card-subtitle">For General Public</p>
+                    </div>
+                    
+                    <div class="card-content">
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Simple Explanations</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-list"></i>
+                                <span>Key Points</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-microphone"></i>
+                                <span>Voice Questions</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-comments"></i>
+                                <span>Interactive Chat</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-heart"></i>
+                                <span>User-Friendly</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <a href="/user" class="btn btn-secondary">
+                            <i class="fas fa-arrow-right"></i>
+                            Enter User Interface
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <h3>How It Works / ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ</h3>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h5>Choose Interface</h5>
+                        <p>Select the appropriate interface based on your needs</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h5>Ask Questions</h5>
+                        <p>Use voice or text to ask legal questions in Kannada</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h5>Get Answers</h5>
+                        <p>Receive clear responses with audio playback</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h5>Continue Conversation</h5>
+                        <p>Ask follow-up questions for detailed guidance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h5>Native Language Support</h5>
+                    <p>Complete support for Kannada language with cultural context awareness</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h5>Voice Interaction</h5>
+                    <p>Speak your questions naturally and get audio responses</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h5>Privacy & Security</h5>
+                    <p>Your conversations are secure and confidential</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h5>24/7 Availability</h5>
+                    <p>Get legal guidance anytime, anywhere</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="disclaimer-section">
+            <div class="disclaimer-content">
+                <h4><i class="fas fa-exclamation-triangle"></i> Important Disclaimer</h4>
+                <p class="disclaimer-text">
+                    <strong>ನಿರಾಕರಣೆ / Disclaimer:</strong> This AI assistant provides general legal information only. 
+                    It is not a substitute for professional legal advice. Always consult with a qualified 
+                    lawyer for specific legal matters and before taking any legal action. The information 
+                    provided should not be considered as legal advice or create an attorney-client relationship.
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h6>ಕಾನೂನು ಸಹಾಯಕ</h6>
+                    <p>Empowering legal access through technology</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h6>Quick Links</h6>
+                    <ul>
+                        <li><a href="/lawyer">Lawyer Interface</a></li>
+                        <li><a href="/user">User Interface</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h6>Support</h6>
+                    <ul>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Kannada Legal Aid Assistant. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

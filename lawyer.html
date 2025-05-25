@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyer Interface - Kannada Legal Aid</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="lawyer-interface">
+    <div class="container">
+        <!-- Header -->
+        <header class="interface-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="/" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Home</span>
+                    </a>
+                    <div class="interface-title">
+                        <i class="fas fa-gavel"></i>
+                        <h1>ವಕೀಲರ ಇಂಟರ್ಫೇಸ್</h1>
+                        <span class="interface-subtitle">Professional Legal Assistant</span>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <button id="clearHistoryBtn" class="btn btn-outline">
+                        <i class="fas fa-trash"></i>
+                        <span>Clear History</span>
+                    </button>
+                    <button id="generateSummaryBtn" class="btn btn-outline">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Generate Summary</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Interface -->
+        <div class="interface-layout">
+            <!-- Input Panel -->
+            <div class="input-panel">
+                <!-- Voice Input -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <i class="fas fa-microphone"></i>
+                        <h3>Voice Input</h3>
+                    </div>
+                    
+                    <div class="voice-controls">
+                        <button id="recordBtn" class="btn btn-voice">
+                            <i class="fas fa-microphone"></i>
+                            <span>Start Recording</span>
+                        </button>
+                        <button id="stopRecordBtn" class="btn btn-stop" style="display: none;">
+                            <i class="fas fa-stop"></i>
+                            <span>Stop Recording</span>
+                        </button>
+                        <div class="recording-indicator" id="recordingIndicator">
+                            <div class="recording-animation"></div>
+                            <span>Ready to record...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Input -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <i class="fas fa-keyboard"></i>
+                        <h3>Text Input</h3>
+                    </div>
+                    
+                    <div class="text-input-container">
+                        <textarea 
+                            id="textInput" 
+                            placeholder="ನಿಮ್ಮ ಕಾನೂನು ಪ್ರಶ್ನೆಯನ್ನು ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ... / Type your legal question here..."
+                            rows="4"
+                        ></textarea>
+                        <button id="submitTextBtn" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Submit Question</span>
+                        </button>
+                    </div>
+                    
+                    <div class="input-hint">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Tip: Press Ctrl+Enter for quick submission</span>
+                    </div>
+                </div>
+
+                <!-- File Upload -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <i class="fas fa-file-upload"></i>
+                        <h3>Document Upload</h3>
+                    </div>
+                    
+                    <div class="file-upload-container">
+                        <input type="file" id="fileInput" accept=".pdf,.txt" style="display: none;">
+                        <div class="file-drop-zone" id="fileDropZone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop files here or click to browse</p>
+                            <span class="file-types">Supported: PDF, TXT</span>
+                        </div>
+                        <div class="file-info" id="fileInfo"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Output Panel -->
+            <div class="output-panel">
+                <!-- Conversation -->
+                <div class="output-section conversation-section">
+                    <div class="section-header">
+                        <i class="fas fa-comments"></i>
+                        <h3>Conversation</h3>
+                        <div class="conversation-controls">
+                            <button id="exportChatBtn" class="btn btn-small">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-container" id="chatContainer">
+                        <div class="welcome-message">
+                            <div class="assistant-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <h4>ನಮಸ್ಕಾರ! ನಾನು ನಿಮ್ಮ ಕಾನೂನು ಸಹಾಯಕ</h4>
+                                <p>I'm here to assist you with legal queries in Kannada. You can ask questions via voice or text, and upload documents for analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audio Response -->
+                <div class="output-section audio-section">
+                    <div class="section-header">
+                        <i class="fas fa-volume-up"></i>
+                        <h3>Audio Response</h3>
+                    </div>
+                    
+                    <div class="audio-player-container">
+                        <audio id="audioPlayer" controls style="display: none;"></audio>
+                        <div class="audio-placeholder" id="audioPlaceholder">
+                            <i class="fas fa-headphones"></i>
+                            <span>Audio response will appear here</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status & Info -->
+                <div class="output-section status-section">
+                    <div class="section-header">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>Status</h3>
+                    </div>
+                    
+                    <div class="status-container">
+                        <div class="status-item">
+                            <span class="status-label">Current Status:</span>
+                            <span class="status-value" id="statusValue">Ready</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Last Transcription:</span>
+                            <span class="status-value" id="transcriptionValue">None</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Conversation Length:</span>
+                            <span class="status-value" id="conversationLength">0 messages</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <h4>Processing your request...</h4>
+                <p>Please wait while we analyze your query</p>
+            </div>
+        </div>
+
+        <!-- Notification Toast -->
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/lawyer.js') }}"></script>
+</body>
+</html>

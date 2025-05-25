@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Interface - Kannada Legal Aid</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="user-interface">
+    <div class="container">
+        <!-- Header -->
+        <header class="interface-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="/" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Home</span>
+                    </a>
+                    <div class="interface-title">
+                        <i class="fas fa-users"></i>
+                        <h1>ಬಳಕೆದಾರರ ಇಂಟರ್ಫೇಸ್</h1>
+                        <span class="interface-subtitle">Simple Legal Guidance</span>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <button id="clearHistoryBtn" class="btn btn-outline">
+                        <i class="fas fa-trash"></i>
+                        <span>Clear History</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Interface -->
+        <div class="user-interface-layout">
+            <!-- Input Panel -->
+            <div class="input-panel">
+                <!-- Voice Input -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <i class="fas fa-microphone"></i>
+                        <h3>Voice Input / ಧ್ವನಿ ಇನ್‌ಪುಟ್</h3>
+                    </div>
+                    
+                    <div class="voice-controls">
+                        <button id="recordBtn" class="btn btn-voice">
+                            <i class="fas fa-microphone"></i>
+                            <span>Ask Question</span>
+                        </button>
+                        <button id="stopRecordBtn" class="btn btn-stop" style="display: none;">
+                            <i class="fas fa-stop"></i>
+                            <span>Stop Recording</span>
+                        </button>
+                        <div class="recording-indicator" id="recordingIndicator">
+                            <div class="recording-animation"></div>
+                            <span>Tap to ask your question in Kannada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Input -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <i class="fas fa-keyboard"></i>
+                        <h3>Text Input / ಪಠ್ಯ ಇನ್‌ಪುಟ್</h3>
+                    </div>
+                    
+                    <div class="text-input-container">
+                        <textarea 
+                            id="textInput" 
+                            placeholder="ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ... / Type your question here..."
+                            rows="4"
+                        ></textarea>
+                        <button id="submitTextBtn" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Ask Question</span>
+                        </button>
+                    </div>
+                    
+                    <div class="input-examples">
+                        <h5>Example Questions:</h5>
+                        <div class="example-questions">
+                            <button class="example-btn" data-question="ವಿವಾಹ ವಿಚ್ಛೇದನಕ್ಕೆ ಏನು ಮಾಡಬೇಕು?">
+                                ವಿವಾಹ ವಿಚ್ಛೇದನಕ್ಕೆ ಏನು ಮಾಡಬೇಕು?
+                            </button>
+                            <button class="example-btn" data-question="ಮನೆ ಖರೀದಿಸುವಾಗ ಏನು ಗಮನಿಸಬೇಕು?">
+                                ಮನೆ ಖರೀದಿಸುವಾಗ ಏನು ಗಮನಿಸಬೇಕು?
+                            </button>
+                            <button class="example-btn" data-question="ಕೆಲಸದ ಸ್ಥಳದಲ್ಲಿ ಸಮಸ್ಯೆ ಇದ್ದರೆ ಏನು ಮಾಡಬೇಕು?">
+                                ಕೆಲಸದ ಸ್ಥಳದಲ್ಲಿ ಸಮಸ್ಯೆ ಇದ್ದರೆ ಏನು ಮಾಡಬೇಕು?
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Output Panel -->
+            <div class="output-panel">
+                <!-- Conversation -->
+                <div class="output-section conversation-section">
+                    <div class="section-header">
+                        <i class="fas fa-comments"></i>
+                        <h3>Conversation / ಸಂಭಾಷಣೆ</h3>
+                    </div>
+                    
+                    <div class="chat-container" id="chatContainer">
+                        <div class="welcome-message">
+                            <div class="assistant-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <h4>ನಮಸ್ಕಾರ! ನಾನು ನಿಮ್ಮ ಕಾನೂನು ಸಹಾಯಕ</h4>
+                                <p>I'm here to help you understand legal matters in simple Kannada. Ask me any legal question!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Points -->
+                <div class="output-section key-points-section">
+                    <div class="section-header">
+                        <i class="fas fa-list"></i>
+                        <h3>Key Points / ಪ್ರಮುಖ ಹಂತಗಳು</h3>
+                    </div>
+                    
+                    <div class="key-points-container" id="keyPointsContainer">
+                        <div class="key-points-placeholder">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Important points from the response will appear here</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audio Response -->
+                <div class="output-section audio-section">
+                    <div class="section-header">
+                        <i class="fas fa-volume-up"></i>
+                        <h3>Audio Response / ಆಡಿಯೋ ಉತ್ತರ</h3>
+                    </div>
+                    
+                    <div class="audio-player-container">
+                        <audio id="audioPlayer" controls style="display: none;"></audio>
+                        <div class="audio-placeholder" id="audioPlaceholder">
+                            <i class="fas fa-headphones"></i>
+                            <span>Audio response will appear here</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="output-section status-section">
+                    <div class="section-header">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>Status / ಸ್ಥಿತಿ</h3>
+                    </div>
+                    
+                    <div class="status-container">
+                        <div class="status-item">
+                            <span class="status-label">Current Status:</span>
+                            <span class="status-value" id="statusValue">Ready to help</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Last Question:</span>
+                            <span class="status-value" id="lastQuestionValue">None</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <h4>Processing your question...</h4>
+                <p>Getting the best answer for you</p>
+            </div>
+        </div>
+
+        <!-- Notification Toast -->
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/user.js') }}"></script>
+</body>
+</html>
